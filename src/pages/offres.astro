@@ -6,7 +6,7 @@ const offres = await getOffres();
 ---
 
 <Base titre="Accueil">
-    <h1 class="text-black text-3xl my-10 text-center">Offres</h1>
+    <h1 class="text-black relative text-center text-3xl my-20">Offres</h1>
 
     <div
         class=" flex flex-col items-center justify-center h-screen"
@@ -14,7 +14,7 @@ const offres = await getOffres();
     >
         <button
             @click="showFavorites = !showFavorites"
-            class="bg-purple-500 hover:bg-purple-700 font-bold py-2 px-4 rounded mb-5"
+            class="bg-purple-500 relative top-2 right-0 hover:bg-purple-700 font-bold py-2 px-4 rounded mb-5"
         >
             <span x-show="!showFavorites">Afficher les favoris</span>
             <span x-show="showFavorites">Afficher tout</span>
@@ -38,4 +38,7 @@ const offres = await getOffres();
             </template>
         </div>
     </div>
+
+    </Card>
+
 </Base>

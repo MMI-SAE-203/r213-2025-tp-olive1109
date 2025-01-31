@@ -1,11 +1,6 @@
 import PocketBase from "pocketbase" ;
 const db = new PocketBase("http://127.0.0.1:8090") ;
 
-/*try { const records = await pb.collection("Maison").getFullList() ;
-    console.table(records) ;
-    } catch (e) {
-    console.error(e) ;
-    }*/
 
 export async function getOffres() {
 try {
@@ -14,7 +9,7 @@ try {
        });
 
        data = data.map((Maison) => {
-              Maison.imageUrl = `${db.baseURL}/api/files/maison/${Maison.id}/${Maison.image}`;
+              Maison.imageUrl = `${db.baseURL}/api/files/maison/${Maison.id}/${Maison.images}`;
               return Maison;
        });
 
@@ -24,6 +19,12 @@ try {
        return [];
 }
 }
+
+/*try { const records = await pb.collection("Maison").getFullList() ;
+    console.table(records) ;
+    } catch (e) {
+    console.error(e) ;
+    }*/
 
 
 // 6- await pb.collection("Maison").getOne(rsiq4f2j1p7502g) ;
