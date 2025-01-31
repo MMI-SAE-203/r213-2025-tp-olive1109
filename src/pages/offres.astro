@@ -1,26 +1,44 @@
 ---
 import Card from "../components/Card.astro";
 import Base from "../layouts/Base.astro";
-import {getOffres} from "../JS/backend-Ahnuir-Noelie.mjs";
+import { getOffres } from "../JS/backend-Ahnuir-Noelie.mjs";
+
 const offres = await getOffres();
 ---
 
 <Base titre="Accueil">
-    <h1 class="text-black relative text-center text-3xl my-20">Offres</h1>
+    <h1 class="text-black text-3xl my-10 text-center">Offres</h1>
 
     <div
-        class=" flex flex-col items-center justify-center h-screen"
-        x-data="{ showFavorites: false }"
+        class="flex flex-col items-center h-screen relative"
+        x-data="{ showFavorites: false, viewMode: 'grid' }"
     >
-        <button
-            @click="showFavorites = !showFavorites"
-            class="bg-purple-500 relative top-2 right-0 hover:bg-purple-700 font-bold py-2 px-4 rounded mb-5"
-        >
-            <span x-show="!showFavorites">Afficher les favoris</span>
-            <span x-show="showFavorites">Afficher tout</span>
-        </button>
+        <div class="flex flex-col items-center w-full top-7">
+            <div class="mb-5">
+                <button
+                    @click="viewMode = 'grid'"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                >
+                    Affichage en grille
+                </button>
+                <button
+                    @click="viewMode = 'list'"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                    Affichage en liste
+                </button>
+            </div>
+    
+            <button
+                @click="showFavorites = !showFavorites"
+                class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-5"
+            >
+                <span x-show="!showFavorites">Afficher les favoris</span>
+                <span x-show="showFavorites">Afficher tout</span>
+            </button>
+        </div>
 
-        <div>
+        <div :class="viewMode === 'grid' ? 'grid columns-2 md:columns-2 lg:columns-3 gap-5' : 'flex flex-col' ">
             <template x-if="!showFavorites">
                 <div>
                     {offres.map((offre) => <Card {...offre} />)}
@@ -38,7 +56,4 @@ const offres = await getOffres();
             </template>
         </div>
     </div>
-
-    </Card>
-
 </Base>

@@ -2,9 +2,7 @@
 const { nomMaison, imageUrl } = Astro.props;
 ---
 
-
-<div class="border border-gray-300 rounded-lg p-4 text-center shadow-md">
+<div class="border border-gray-300 rounded-lg p-4 text-center shadow-md mb-9">
     <img src={imageUrl} alt={`Image de ${nomMaison}`} class="max-w-full h-auto rounded-lg" />
     <h2 class="text-xl font-semibold mt-4">{nomMaison}</h2>
 </div>
-
