@@ -20,6 +20,11 @@ try {
 }
 }
 
+export async function oneID(id) {
+       const record = await db.collection('Maison').getOne(id);
+       return record;
+       }
+
 /*try { const records = await pb.collection("Maison").getFullList() ;
     console.table(records) ;
     } catch (e) {

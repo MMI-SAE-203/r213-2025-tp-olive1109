@@ -1,0 +1,16 @@
+---
+import { oneID } from "../../JS/backend-Ahnuir-Noelie.mjs";
+import Base from '../../layouts/Base.astro';
+
+const { id } = Astro.params;
+//export const prerender = false;
+const offre = await oneID(id);
+---
+
+<Base titre={offre.nomMaison}>
+    <h2>{offre.nomMaison}</offre>
+    <ul>
+        <li>{offre.adresse}</li>
+        ...
+    </ul>
+</Base>
