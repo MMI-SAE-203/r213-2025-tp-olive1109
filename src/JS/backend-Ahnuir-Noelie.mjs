@@ -25,6 +25,12 @@ export async function oneID(id) {
        return record;
        }
 
+export async function getMaisonsBySurface(surface) {
+       const record = await db.collection("Maison").getFullList( {filter: `surface > ${surface}`, })
+       return record;
+       }
+       
+
 /*try { const records = await pb.collection("Maison").getFullList() ;
     console.table(records) ;
     } catch (e) {

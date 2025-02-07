@@ -1,0 +1,19 @@
+---
+import { getMaisonsBySurface } from "../../../JS/backend-Ahnuir-Noelie.mjs";
+import Base from '../../../layouts/Base.astro';
+
+
+const { surface } = Astro.params;
+export const prerender = false;
+const maisons = await getMaisonsBySurface(Number(surface));
+---
+
+<Base titre={`Maisons avec une surface supérieure à ${surface} m²`}>
+    <ul>
+        {maisons.map(maison => (
+            <li {maison.id} >
+                <a href={`/offres/surface/${maison.id}`}>{maison.nomMaison}</a> - {maison.surface} m²
+            </li>
+        ))}
+    </ul>
+</Base>

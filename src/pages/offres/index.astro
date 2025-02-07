@@ -37,6 +37,7 @@ const offres = await getOffres();
                 <span x-show="showFavorites">Afficher tout</span>
             </button>
         </div>
+        
 
         <div :class="viewMode === 'grid' ? 'grid columns-2 md:columns-2 lg:columns-3 gap-5' : 'flex flex-col' ">
             <template x-if="!showFavorites">

@@ -3,7 +3,7 @@ import { oneID } from "../../JS/backend-Ahnuir-Noelie.mjs";
 import Base from '../../layouts/Base.astro';
 
 const { id } = Astro.params;
-//export const prerender = false;
+export const prerender = false;
 const offre = await oneID(id);
 ---
 
